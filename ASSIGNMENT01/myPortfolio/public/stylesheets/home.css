@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.sectionContent {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+h1,
+h3,
+h5 {
+    background: linear-gradient(to right, #425cfc, #fff, #a630fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    text-decoration: none;
+    font-family: "Bangers", serif;
+    margin: 10px;
+    width: 80%;
+    word-wrap: break-word;
+}
+
+.sectionContent h1 {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid white;
+    animation: typing 2.5s steps(35, end) forwards, blink 0.8s infinite;
+    font-size: 8vw;
+    text-align: center;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 14.5ch;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.sectionContent h3 {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fade-in 1.5s ease-in-out forwards;
+    animation-delay: 2.8s;
+    font-size: 3vw;
+    text-align: center;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

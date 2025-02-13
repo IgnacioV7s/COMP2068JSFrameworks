@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+
+.sectionContent{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10%;
+  /* background-color: #dae4ed; */
+}
+
+#profile{
+  filter: drop-shadow(0 0 10px rgba(0,0,0,.8));
+  height: 80%;
+  border: 4px solid #a630fc;
+  border-right: none;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 120px;
+}
+
+.aboutInfo{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 2% 5%;
+  justify-content: center;
+  height: 80%;
+  border: 4px solid #425cfc;
+  border-left: none;
+  border-top-right-radius: 120px;
+  border-bottom-right-radius: 0px;
+  background-color: #dae4ed;
+  color: #44414a;
+}
+
+.aboutInfo > h1{
+  font-family: "Lobster", serif;
+  margin-bottom: .5em;
+  background: linear-gradient(to right, #425cfc, #a630fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.aboutCards > ul{
+  display: flex;
+  flex-direction: row;
+}
+
+.aboutCards > ul > li{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #a630fc, #425cfc);
+  color: white;
+  margin: 0 1em;
+  padding: .5em;
+  border-radius: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sectionContent {
+  height: 60dvh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10%;
+  background: linear-gradient(to right, #425cfc, #fff, #a630fc);
+}
+
+h1 {
+  font-family: "Lobster", serif;
+  font-size: calc(0.1 * 30vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  align-content: flex-start;
+  margin-bottom: 0.5em;
+  background: linear-gradient(to right, # , #555, #a630fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#profile {
+  flex: 3;
+  height: 60%;
+  border-radius: 50%;
+  border: 5px solid #a630fc;
+}
+
+.divPhoto,
+.divInfo {
+  height: 80dvh;
+  width: 100dvw;
+  margin: 5px 0;
+}
+
+.divPhoto {
+  background: linear-gradient(to right, #425cfc, #fff, #a630fc);
+  flex: 3;
+  align-items: center;
+  background-color: black;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.divInfo {
+  flex: 5;
+  flex-direction: column;
+  background: linear-gradient(to right, #a630fc, #fff, #425cfc);
+  background-color: white;
+  color: black;
+  border: 1px solid green;
+  border-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+p {
+  margin: 0em 3em;
+  text-align: center;
+  color: white;
+}
+
+.cardsInfo,
+.cardsInfo>ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+.aboutLogos {
+  display: flex;
+  font-family: "Tiny", system-ui;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #a630fc;
+  padding: .5em;
+  margin: .5em;
+  border: 2px solid black;
+  border-radius: 25px;
+}
+
+section>div>ul>li:hover {
+  background-color: #425cfc;
+  color: white;
+} */
