@@ -4,5 +4,89 @@
 </head>
 
 <div class="sectionContent">
-    <h1>IGNACIO VALENZUELA</h1>
+    <div class="sectionLeft ">
+        <img id="contactPhoto" src="images/ContactPortfolio.jpg" alt="">
+        <div class="contactMe">
+            <h2>Let's talk</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="from_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="from_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+            <p id="status"></p>
+        </div>
+    </div>
+    <div class="sectionRight">
+        <div class="contactIcons">
+            <div class="logoAndComment">
+                <a href="https://github.com/IgnacioV7s" target="_blank">
+                    <img width="35px" height="35px"
+                        src="https://img.icons8.com/?size=100&id=44829&format=png&color=000000" alt="email" />
+                </a>
+                <span>Send me an email</span>
+            </div>
+            <div class="logoAndComment">
+                <a href="https://www.linkedin.com/in/ignaciov7" target="_blank">
+                    <img width="35px" height="35px"
+                        src="https://img.icons8.com/?size=100&id=49421&format=png&color=000000" alt="myCV" />
+                </a>
+                <span>Download my resume</span>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Toast Notification -->
+<div id="notification" class="notification">
+    <p id="notificationMessage"></p>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+    (function () {
+        emailjs.init("QL-4npt-WPsIeyXtu");
+    })();
+
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Envía el formulario directamente
+        emailjs.sendForm("service_i3vq7n8", "template_9lgbaip", this)  // 'this' hace referencia al formulario
+            .then(function (response) {
+                // Mostrar mensaje de éxito en la notificación
+                document.getElementById("notificationMessage").innerText = "Message sent successfully!";
+                document.getElementById("notification").classList.remove("error");
+                document.getElementById("notification").style.display = "block";
+
+                // Limpiar los campos del formulario
+                document.getElementById("contactForm").reset();
+
+                // Ocultar el mensaje después de 3 segundos
+                setTimeout(function () {
+                    document.getElementById("notification").style.display = "none";
+                }, 3000);
+            }, function (error) {
+                // Mostrar mensaje de error en la notificación
+                console.error("EmailJS error:", error);
+                document.getElementById("notificationMessage").innerText = "Failed to send message. Try again later.";
+                document.getElementById("notification").classList.add("error");
+                document.getElementById("notification").style.display = "block";
+
+                // Ocultar el mensaje después de 3 segundos
+                setTimeout(function () {
+                    document.getElementById("notification").style.display = "none";
+                }, 3000);
+            });
+    });
+</script>
