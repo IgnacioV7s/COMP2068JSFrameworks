@@ -34,7 +34,6 @@ nav {
   text-transform: uppercase;
 }
 
-/* Botones del NavBar */
 body>nav>ul {
   padding: 0;
   display: flex;

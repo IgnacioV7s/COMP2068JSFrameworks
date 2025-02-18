@@ -29,14 +29,15 @@
     <div class="sectionRight">
         <div class="contactIcons">
             <div class="logoAndComment">
-                <a href="https://github.com/IgnacioV7s" target="_blank">
+                <a href="mailto:ignaciovalenzuela712@gmail.com" target="_blank">
                     <img width="35px" height="35px"
                         src="https://img.icons8.com/?size=100&id=44829&format=png&color=000000" alt="email" />
                 </a>
                 <span>Send me an email</span>
             </div>
             <div class="logoAndComment">
-                <a href="https://www.linkedin.com/in/ignaciov7" target="_blank">
+                <a href="https://drive.google.com/file/d/1x6wUPii3gKCrBTjT8rcTX3Ml3QLEMFRV/view?usp=sharing"
+                    target="_blank">
                     <img width="35px" height="35px"
                         src="https://img.icons8.com/?size=100&id=49421&format=png&color=000000" alt="myCV" />
                 </a>
@@ -46,7 +47,6 @@
     </div>
 </div>
 
-<!-- Toast Notification -->
 <div id="notification" class="notification">
     <p id="notificationMessage"></p>
 </div>
@@ -61,29 +61,24 @@
     document.getElementById("contactForm").addEventListener("submit", function (event) {
         event.preventDefault();
 
-        // Envía el formulario directamente
-        emailjs.sendForm("service_i3vq7n8", "template_9lgbaip", this)  // 'this' hace referencia al formulario
+
+        emailjs.sendForm("service_i3vq7n8", "template_9lgbaip", this)
             .then(function (response) {
-                // Mostrar mensaje de éxito en la notificación
                 document.getElementById("notificationMessage").innerText = "Message sent successfully!";
                 document.getElementById("notification").classList.remove("error");
                 document.getElementById("notification").style.display = "block";
 
-                // Limpiar los campos del formulario
                 document.getElementById("contactForm").reset();
 
-                // Ocultar el mensaje después de 3 segundos
                 setTimeout(function () {
                     document.getElementById("notification").style.display = "none";
                 }, 3000);
             }, function (error) {
-                // Mostrar mensaje de error en la notificación
                 console.error("EmailJS error:", error);
                 document.getElementById("notificationMessage").innerText = "Failed to send message. Try again later.";
                 document.getElementById("notification").classList.add("error");
                 document.getElementById("notification").style.display = "block";
 
-                // Ocultar el mensaje después de 3 segundos
                 setTimeout(function () {
                     document.getElementById("notification").style.display = "none";
                 }, 3000);
