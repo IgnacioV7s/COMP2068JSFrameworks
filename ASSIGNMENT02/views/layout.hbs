@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+
+<head>
+  <title>{{title}}</title>
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+  {{#if stylesheet}}
+  <link rel="stylesheet" href="/stylesheets/{{stylesheet}}" />
+  {{/if}}
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a class="navLinks" href="/">Home</a></li>
+      {{#if user}}
+      <li><a class="navLinks" href="/payments">Payments</a></li>
+      <li><a class="navLinks" href="/logout">Logout</a></li>
+      <li>Welcome, {{user.name}}!</li>
+      {{else}}
+      <li><a class="navLinks" href="/login">Login</a></li>
+      <li><a class="navLinks" href="/register">Register</a></li>
+      {{/if}}
+    </ul>
+  </nav>
+
+  <main>
     {{{body}}}
-  </body>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 REAL UNION F.C.</p>
+    <div class="footerLinks">
+      <a href="https://www.instagram.com/realunionsupersenior" target="_blank">
+        <img width="40" height="40" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="instagram-new" />
+      </a>
+      <a href="https://www.tiktok.com/@realunion.fc" target="_blank">
+        <img width="40" height="40" src="https://img.icons8.com/ios-glyphs/30/tiktok.png" alt="tiktok" />
+    </div>
+  </footer>
+</body>
+
 </html>
