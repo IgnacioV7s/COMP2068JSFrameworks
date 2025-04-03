@@ -16,12 +16,12 @@
     <ul>
       <li><a class="navLinks" href="/">Home</a></li>
       {{#if user}}
-      <li><a class="navLinks" href="/payments">Payments</a></li>
-      <li><a class="navLinks" href="/logout">Logout</a></li>
-      <li>Welcome, {{user.name}}!</li>
+        <li><a class="navLinks" href="/payments/general">Payments</a></li>
+        <li><a class="navLinks" href="/userprofile">User Profile</a></li>
+        <li><a class="navLinks" href="/logout">Logout</a></li>
       {{else}}
-      <li><a class="navLinks" href="/login">Login</a></li>
-      <li><a class="navLinks" href="/register">Register</a></li>
+        <li><a class="navLinks" href="/auth/login">Login</a></li>
+        <li><a class="navLinks" href="/auth/register">Register</a></li>
       {{/if}}
     </ul>
   </nav>

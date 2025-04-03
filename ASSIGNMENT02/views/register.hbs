@@ -1,0 +1,51 @@
+<form id="registerInput" method="POST" action="/auth/register">
+
+    {{!-- Silueta de jugador --}}
+    <img src="/images/player.png" id="playerImg" alt="">
+
+    {{!-- Campo username --}}
+    <fieldset class="form-group">
+        <label for="username">Name:</label>
+        <input class="fieldsetInput" type="text" id="username" name="username" placeholder="Your name and last name"
+            required>
+    </fieldset>
+
+    {{!-- Campo email --}}
+    <fieldset class="form-group">
+        <label for="email">Email:</label>
+        <input class="fieldsetInput" type="email" id="email" name="email" placeholder="Your email" required>
+    </fieldset>
+
+    {{!-- Campo password --}}
+    <fieldset class="form-group">
+        <label for="password">Password:</label>
+        <input class="fieldsetInput" type="password" id="password" name="password" placeholder="Your password" required>
+    </fieldset>
+
+    {{!-- Campo confirm password --}}
+    <fieldset class="form-group">
+        <label for="confirmPassword">Confirm password:</label>
+        <input class="fieldsetInput" type="password" id="confirmPassword" name="confirmPassword"
+            placeholder="Confirm your password" required>
+    </fieldset>
+
+    {{!-- Campo submit --}}
+    <fieldset class="form-group">
+        <button class="submitBtn" type="submit">Registrarse</button>
+    </fieldset>
+
+    {{!-- Campo login --}}
+    <fieldset class="form-group-options">
+        <p>Ya tienes cuenta? <a href="/auth/login">Inicia sesión</a></p>
+    </fieldset>
+
+    {{!-- Inicia sesión con Google: --}}
+    <fieldset class="form-group-options">
+        <a href="/auth/google" class="google-btn" style="text-decoration: none;">
+            <img id="googleLogo" src="https://img.icons8.com/color/48/google-logo.png" alt="">
+            Or register with Google
+        </a>
+    </fieldset>
+</form>
+
+<script src="/javascripts/register.js"></script>

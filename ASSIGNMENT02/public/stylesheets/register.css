@@ -1,0 +1,66 @@
+#playerImg {
+    height: 80px;
+    width: auto;
+}
+
+#registerInput {
+    width: 20dvw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 3px solid #d0b928;
+    padding: 1em;
+    border-radius: 15px;
+}
+
+/* Cada fieldset */
+.form-group {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+}
+
+/* Cada cuadro de texto dentro del fieldset */
+.fieldsetInput {
+    padding: 10px;
+    border-radius: 2em;
+    box-sizing: border-box;
+    font-size: 12px;
+    width: 100%;
+}
+
+.submitBtn {
+    background-color: #d0b928;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2em;
+    font-size: 14px;
+    cursor: pointer;
+    max-width: max-content;
+}
+
+.form-group-options{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#googleLogo {
+    width: 20px;
+    height: 20px;
+    margin-right: .5em;
+}
+
+.google-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

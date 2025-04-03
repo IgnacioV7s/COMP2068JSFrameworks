@@ -1,0 +1,37 @@
+<form id="loginInput" method="POST" action="/auth/login">
+    <img src="/images/RU.png" id="realLogo" alt="Real Unión Logo">
+
+    {{!-- Campo de entrada para el correo electrónico --}}
+    <fieldset class="form-group">
+        <label for="email" class="col-2 control-label">Email:</label>
+        <input class="fieldsetInput" name="email" id="email" required />
+    </fieldset>
+
+    {{!-- Campo de entrada para la contraseña --}}
+    <fieldset class="form-group">
+        <label for="password" class="col-2 control-label">Password:</label>
+        <div class="password-container">
+            <input class="fieldsetInput" name="password" id="password" type="password" required />
+            <button type="button" id="togglePassword" class="password-toggle">
+                <img id="eyeIcon" src="https://img.icons8.com/ios/50/visible--v1.png" alt="Show Password">
+            </button>
+        </div>
+    </fieldset>
+
+    {{!-- Botón para enviar el formulario --}}
+    <button type="submit" class="submitButton">Login</button>
+    
+    <div id="needAccount">
+        <p>Need an account?</p>
+        <a href="/auth/register" title="Register" style="margin-left: .5em;">Register</a>
+    </div>
+ 
+    {{!-- Inicia sesión con Google: --}}
+    <fieldset class="form-group">
+        <a href="/auth/google" class="google-btn" style="text-decoration: none;">
+            <img id="googleLogo" src="https://img.icons8.com/color/48/google-logo.png" alt="">
+            Or login with Google
+        </a>
+    </fieldset>
+</form>
+<script src="/javascripts/login.js"></script>

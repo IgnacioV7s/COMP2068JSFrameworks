@@ -1,0 +1,90 @@
+/* Logo */
+#realLogo {
+  height: 15em;
+  width: auto;
+  margin-bottom: 1em;
+}
+
+/* Formulario de Login */
+#loginInput {
+  width: 20dvw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 3px solid #d0b928;
+  padding: 1em;
+  border-radius: 15px;
+}
+
+/* Cada fieldset */
+.form-group {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+}
+
+/* Cada cuadro de texto dentro del fieldset */
+.fieldsetInput {
+  padding: 10px;
+  border-radius: 2em;
+  box-sizing: border-box;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Campo de texto de la contraseña (para alinear con el botón de hacer visible o no) */
+.password-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Botón para hacer visible la contraseña */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ícono del botón para hacer visible la contraseña */
+#eyeIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.submitButton{
+  background-color: #d0b928;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 2em;
+  font-size: 14px;
+  cursor: pointer;
+  max-width: max-content;
+  margin-bottom: 1em;
+}
+
+#needAccount{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Inicio de sesión con Google (Logo y Texto) */
+#googleLogo{
+  width: 20px;
+  height: 20px;
+  margin-right: .5em;
+}
+
+.google-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

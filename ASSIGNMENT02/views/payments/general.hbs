@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+
+<table>
+    <thead>
+        <th>Player</th>
+        <th>Amount Paid</th>
+        <th>Status</th>
+        <th>Last Payment</th>
+    </thead>
+    <tbody>
+        {{#each payments}}
+        <tr>
+            <td>{{ this.name }}</td>
+            <td>{{ this.amountPaid }}</td>
+            <td>{{ this.status }}</td>
+            <td>{{ this.lastPayment }}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<a id="addPayment" href="/payments/addpayment">Register a new payment</a>
