@@ -30,6 +30,7 @@
     box-sizing: border-box;
     font-size: 12px;
     width: 100%;
+    text-align: center;
 }
 
 .submitBtn {

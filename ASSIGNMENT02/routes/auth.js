@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const passport = require("../configs/passportConfig");
 const User = require('../models/User');
+const { isAuthenticated } = require('./middlewares');
 const bcrypt = require('bcrypt');
 
 router.get('/login', function (req, res, next) {
@@ -78,5 +79,16 @@ router.get('/google/callback', passport.authenticate("google", { failureRedirect
   (req, res) => {
     res.redirect('/userprofile');
   });
+
+router.get('/logout', isAuthenticated, function (req, res, next) {
+  console.log("Logout route reached");  // Verifica que esta ruta se está ejecutando
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.clearCookie('connect.sid'); // Asegúrate de borrar la cookie de sesión si es necesario
+    res.redirect('/');
+  });
+});
 
 module.exports = router;

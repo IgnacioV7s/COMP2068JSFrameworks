@@ -10,10 +10,33 @@
     <tbody>
         {{#each payments}}
         <tr>
-            <td>{{ this.name }}</td>
+            <td>{{ this.username }}</td>
             <td>{{ this.amountPaid }}</td>
-            <td>{{ this.status }}</td>
-            <td>{{ this.lastPayment }}</td>
+            {{#if ../userIsAdmin}}
+            <td>
+                <form action="/payments/update-status/{{this._id}}" method="POST">
+                    <select name="status" onchange="this.form.submit()">
+                        <option value="Pending" {{#if (eq this.status 'Pending' ) }}selected{{/if}}>🕒 Pending</option>
+                        <option value="Confirmed" {{#if (eq this.status 'Confirmed' ) }}selected{{/if}}>✅ Confirmed
+                        </option>
+                        <option value="Rejected" {{#if (eq this.status 'Rejected' ) }}selected{{/if}}>❌ Rejected
+                        </option>
+                    </select>
+                </form>
+            </td>
+            {{else}}
+            <td>
+                {{#if (eq this.status 'Pending')}}
+                🕒 Pending
+                {{else if (eq this.status 'Confirmed')}}
+                ✅ Confirmed
+                {{else if (eq this.status 'Rejected')}}
+                ❌ Rejected
+                {{else}}
+                {{this.status}}
+                {{/if}}
+            </td> {{/if}}
+            <td>{{ formatDate this.paymentDate }}</td>
         </tr>
         {{/each}}
     </tbody>

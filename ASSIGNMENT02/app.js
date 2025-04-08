@@ -8,6 +8,8 @@ var configs = require('./configs/globals.js');
 var passport = require("./configs/passportConfig");
 var mongoose = require('mongoose');
 var session = require("express-session");
+const moment = require('moment');
+var hbs = require('hbs');
 
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
@@ -21,9 +23,17 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
+
+hbs.registerHelper('formatDate', function(date) {
+  return moment(date).format('DD/MM/YYYY'); // o el formato que prefieras
+});
+
+hbs.registerHelper('eq', function (a, b) {
+  return a === b;
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -56,6 +66,7 @@ mongoose.connect(configs.ConnectionStrings.MongoDB)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
+  res.render('error', { title: '404 Not Found' });
 });
 
 // error handler

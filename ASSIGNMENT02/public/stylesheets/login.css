@@ -33,6 +33,7 @@
   box-sizing: border-box;
   font-size: 14px;
   width: 100%;
+  text-align: center;
 }
 
 /* Campo de texto de la contraseña (para alinear con el botón de hacer visible o no) */

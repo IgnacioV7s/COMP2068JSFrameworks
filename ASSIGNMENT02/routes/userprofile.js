@@ -16,7 +16,7 @@ router.get('/userprofile', isAuthenticated, isProfileComplete, function (req, re
 router.post('/userprofile/:_id', isAuthenticated, function (req, res, next) {
   const ID = req.params._id.replace(":", "").replace("_", "");
   User.findByIdAndUpdate(ID, {
-    name: req.body.name,
+    name: req.body.username,
     rut: req.body.rut,
     dob: req.body.dob
   })

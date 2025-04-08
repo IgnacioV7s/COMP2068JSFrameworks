@@ -1,12 +1,17 @@
 <form action="/payments/add" method="POST" class="payment-form"> 
     <div>
         <label for="playerName">Player Name:</label>
-        <select id="playerName" name="playerName" class="form-input" required>
-            <option value="" disabled selected>Select a player</option>
+        <select name="playerName" {{#if userIsAdmin}}required{{/if}}>
+        {{#if userIsAdmin}}
+            <!-- Si es admin, mostramos todos los jugadores disponibles -->
             {{#each players}}
-                <option value="{{this.id}}">{{this.username}}</option>
+                <option value="{{this._id}}">{{this.username}}</option>
             {{/each}}
-        </select>
+        {{else}}
+            <!-- Si no es admin, mostramos solo al usuario logueado y lo deshabilitamos -->
+            <option value="{{currentUser._id}}" selected>{{currentUser.username}}</option>
+        {{/if}}
+    </select>
     </div>
     <div>
         <label for="paymentAmount">Payment Amount:</label>
