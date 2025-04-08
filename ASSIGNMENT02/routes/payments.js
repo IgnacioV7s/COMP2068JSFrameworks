@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const Payment = require('../models/payment');
+const Payment = require('../models/Payment');
 const User = require('../models/User');
 const mongoose = require('mongoose');
 
