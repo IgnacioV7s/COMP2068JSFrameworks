@@ -1,6 +1,12 @@
+.table-container {
+    max-height: 70%; /* Ajusta la altura máxima según tus preferencias */
+    max-width: 100%; /* Ajusta el ancho máximo según tus preferencias */
+    overflow-y: auto; 
+    /* border: 1px solid #ccc; Opcional: Añade un borde para destacar el área */
+}
+
 /* Sección (resumen de pagos) */
 .paymentSummary {
-    margin: 2em;
     background-color: rgba(255, 255, 255, 0.7);
     border: 4px solid #d0b928;
     border-radius: 10px;
@@ -8,7 +14,7 @@
     display: inline-block;
     text-align: start;
     padding: 1em;
-    width: 50%;
+    /* width: 50%; */
 }
 
 .payment-box p {
@@ -18,7 +24,6 @@
 
 /* Player Payments Table */
 .player-payments {
-    width: 80%;
     margin: 20px auto;
     text-align: center;
 }
@@ -34,7 +39,7 @@
 }
 
 table {
-    width: 80%;
+    width: 70dvw;
     border-collapse: collapse;
     margin-top: 10px;
 }

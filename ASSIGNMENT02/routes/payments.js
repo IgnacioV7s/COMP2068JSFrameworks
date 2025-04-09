@@ -2,24 +2,27 @@ var express = require('express');
 var router = express.Router();
 
 const Payment = require('../models/Payment');
+const transporter = require('../routes/emailTransporter');
 const User = require('../models/User');
 const mongoose = require('mongoose');
-
 const { isAuthenticated, isProfileComplete } = require('./middlewares');
 
 router.get('/general', isAuthenticated, isProfileComplete, async (req, res, next) => {
   try {
     let payments;
+    let totalPaid = 0;
 
     if (req.user.role === 'admin') {
       payments = await Payment.find().populate('userId');
+      totalPaid = payments.reduce((sum, payment) => sum + Number(payment.amountPaid), 0);
     }
     else {
       payments = await Payment.find({ userId: req.user._id }).populate('userId');
+      totalPaid = payments.reduce((sum, payment) => sum + Number(payment.amountPaid), 0);
     }
 
     res.render('payments/general', {
-      title: 'Payments', stylesheet: 'payments.css', payments, userIsAdmin: req.user.role === 'admin'
+      title: 'Payments', stylesheet: 'payments.css', payments, userIsAdmin: req.user.role === 'admin', totalPaid, 
     });
 
   } catch (error) {
@@ -30,7 +33,8 @@ router.get('/general', isAuthenticated, isProfileComplete, async (req, res, next
 
 router.get('/addpayment', async (req, res, next) => {
   let data = await User.find().sort({ username: 1 });
-  res.render('payments/addpayment', { title: 'Payments', stylesheet: 'addpayment.css', players: data, currentUser: req.user, userIsAdmin: req.user.role === 'admin' });
+  res.render('payments/addpayment', { title: 'Payments', stylesheet: 'addpayment.css', 
+    players: data, currentUser: req.user, userIsAdmin: req.user.role === 'admin' });
 })
 
 router.post('/add', async (req, res, next) => {
@@ -38,30 +42,45 @@ router.post('/add', async (req, res, next) => {
     const { playerName, paymentAmount, paymentDate } = req.body;
     const userObjectId = new mongoose.Types.ObjectId(playerName);
 
-    console.log("Datos recibidos", req.body);
-
-    // Validar si el usuario existe
-    const user = await User.findById(userObjectId);
+    const user = await User.findById(userObjectId); // Validar si el usuario existe
     if (!user) {
-      return res.status(404).send("User not found");
+      return res.status(404).send("Usuario no encontrado");
     }
 
-    // Crear el nuevo pago
-    const newPayment = new Payment({
+    const newPayment = new Payment({ // Crear el nuevo pago
       userId: userObjectId,
       username: user.username,
       amountPaid: paymentAmount,
       paymentDate: new Date(paymentDate),
     });
 
-    // Guardar (registrar) el pago en la DB
-    await newPayment.save();
+    await newPayment.save(); // Guardar el pago en la base de datos
+
+    const adminUser = await User.findOne({ role: 'admin' }); // Search for users with role 'admin'
+    if (!adminUser) {
+      console.error("No admin users were found.");
+    } else {
+      const mailOptions = { // Create email content
+        from: process.env.EMAIL_USER,
+        to: 'nashoooox3@gmail.com', // Admin email
+        subject: 'New payment register',
+        text: `Hello ${adminUser.username},\n\nNew payment registered:\n\n` +
+          `User: ${user.username}\n` +
+          `Amount: $${paymentAmount}\n` +
+          `Date: ${new Date(paymentDate).toLocaleDateString()}\n\nBest regards.`
+      };
+
+      await transporter.sendMail(mailOptions); // To send the email
+      console.log("Confirmation email was sent to the admin."); // Flag to debug
+    }
+
     res.redirect('/payments/general');
   } catch (error) {
-    console.error(error);
-    res.status(400).send("Error procesando el pago: " + error.message);
+    console.error("Error al procesar el pago:", error.message);
+    res.status(400).send("Error al procesar el pago: " + error.message);
   }
 });
+
 
 router.post('/update-status/:id', async (req, res) => {
   try {
@@ -71,7 +90,6 @@ router.post('/update-status/:id', async (req, res) => {
 
     const { status } = req.body;
 
-    // Validación rápida por seguridad
     const validStatuses = ['Pending', 'Confirmed', 'Rejected'];
     if (!validStatuses.includes(status)) {
       return res.status(400).send('Invalid status');
@@ -79,7 +97,7 @@ router.post('/update-status/:id', async (req, res) => {
 
     await Payment.findByIdAndUpdate(req.params.id, { status });
 
-    res.redirect('/payments/general'); // o donde estés renderizando
+    res.redirect('/payments/general');
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
