@@ -58,6 +58,10 @@ app.use('/auth', authRouter);
 app.use('/payments', isAuthenticated, isProfileComplete, paymentsRouter);
 app.use('/userprofile', isAuthenticated, isProfileComplete, userprofileRouter);
 
+hbs.registerHelper('formatCurrency', function (value) {
+  return `$ ${Number(value).toLocaleString('es-CL')}`;
+});
+
 // Connect to MongoDB using Mongoose
 mongoose.connect(configs.ConnectionStrings.MongoDB)
   .then(() => { console.log('Connected to MongoDB'); })

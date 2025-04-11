@@ -31,21 +31,24 @@
 
     {{!-- Campo submit --}}
     <fieldset class="form-group">
-        <button class="submitBtn" type="submit">Registrarse</button>
+        <button class="submitBtn" type="submit">Register</button>
     </fieldset>
 
     {{!-- Campo login --}}
     <fieldset class="form-group-options">
-        <p>Ya tienes cuenta? <a href="/auth/login">Inicia sesión</a></p>
+        <p class="login-text">
+            Already have an account?
+            <a href="/auth/login" class="login-link">Log In</a>
+        </p>
     </fieldset>
 
-    {{!-- Inicia sesión con Google: --}}
     <fieldset class="form-group-options">
-        <a href="/auth/google" class="google-btn" style="text-decoration: none;">
-            <img id="googleLogo" src="https://img.icons8.com/color/48/google-logo.png" alt="">
+        <a href="/auth/google" class="google-btn" title="Register with Google">
+            <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Logo" class="google-logo">
             Or register with Google
         </a>
     </fieldset>
+
 </form>
 
 <script src="/javascripts/register.js"></script>

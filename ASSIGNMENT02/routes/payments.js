@@ -12,19 +12,30 @@ router.get('/general', isAuthenticated, isProfileComplete, async (req, res, next
     let payments;
     let totalPaid = 0;
 
+    // Asignar totalToPay según el rol del usuario
+    let totalToPay;
     if (req.user.role === 'admin') {
       payments = await Payment.find().populate('userId');
       totalPaid = payments.reduce((sum, payment) => sum + Number(payment.amountPaid), 0);
-    }
-    else {
+      totalToPay = 3500000; // Valor fijo para admin
+    } else if (req.user.role === 'player') {
       payments = await Payment.find({ userId: req.user._id }).populate('userId');
       totalPaid = payments.reduce((sum, payment) => sum + Number(payment.amountPaid), 0);
+      totalToPay = 150000; // Valor fijo para jugador
     }
 
-    res.render('payments/general', {
-      title: 'Payments', stylesheet: 'payments.css', payments, userIsAdmin: req.user.role === 'admin', totalPaid, 
-    });
+    // Calcular cuánto falta por pagar
+    const remainingToPay = Math.max(totalToPay - totalPaid, 0); // No puede ser negativo
 
+    res.render('payments/general', {
+      title: 'Payments',
+      stylesheet: 'payments.css',
+      payments,
+      userIsAdmin: req.user.role === 'admin',
+      totalPaid,
+      totalToPay,
+      remainingToPay // Enviar el resultado a la vista
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Error retrieving payments: " + error.message);

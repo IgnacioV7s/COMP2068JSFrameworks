@@ -1,19 +1,15 @@
 <div class="home-container">
-    <h1>Welcome to Real Unión F.C.</h1>
-    <h3>Fee Management Platform</h3>
-
     {{#if user}}
     <!-- Si el usuario está autenticado -->
-    <p>Hello, {{user.username}}!
-        <br>
-        We're glad to have you here.
-    </p>
+    <h1>Welcome, {{user.username}}</h1>
+    <h3>We're glad to have you here</h3>
     <div id="redirectBtns">
         <a id="goToPay" href="/payments/general">Go to Payments</a>
         <a id="goToLogout" href="/auth/logout">Logout</a>
     </div>
     {{else}}
-    <!-- Si el usuario no está autenticado -->
+    <h1>Welcome to Real Unión F.C.</h1>
+    <h1>Fee Management Platform</h1>
     <a href="/auth/login">Go to Login</a>
     {{/if}}
 </div>

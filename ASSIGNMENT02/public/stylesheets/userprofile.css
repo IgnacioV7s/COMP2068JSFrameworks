@@ -11,8 +11,7 @@
 }
 
 #userProfileForm > h1 {
-    margin-top: .1em;
-    margin-bottom: .5em;
+    margin: 0.5em 0;
 }
 
 #userProfileForm > h2 {
@@ -65,4 +64,15 @@
     font-size: 14px;
     cursor: pointer;
     max-width: max-content;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+    display: none; /* Oculto por defecto */
+}
+
+.error-message.visible {
+    display: block; /* Se muestra cuando el error está presente */
 }

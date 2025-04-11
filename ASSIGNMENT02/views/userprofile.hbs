@@ -1,26 +1,32 @@
-<form id="userProfileForm" method="POST" action="/userprofile/:_{{user._id}}">
-    <h1></h1>
+<form id="userProfileForm" method="POST" action="/userprofile">
     <h1>Bienvenido</h1>
     <h2>{{user.username}}</h2>
     <p>Actualiza tus datos antes de continuar</p>
+
+    <input type="hidden" name="id" value="{{user._id}}">
 
     <!-- Nombre -->
     <fieldset class="form-group">
         <label for="username">Nombre:</label>
         <input type="text" id="username" name="username" class="fieldsetInput" value="{{user.username}}" required>
+        <span id="usernameError" class="error-message">{{errorUsername}}</span>
     </fieldset>
 
-    <!-- RUT (Obligatorio, debe ser ingresado antes de acceder a otras secciones) -->
+    <!-- RUT -->
     <fieldset class="form-group">
         <label for="rut">RUT:</label>
         <input type="text" id="rut" name="rut" class="fieldsetInput" placeholder="Ej: 12.345.678-9" value="{{user.rut}}"
             required>
+        {{#if errorRut}}
+        <span id="rutError" class="error-message visible">{{errorRut}}</span>
+        {{/if}}
     </fieldset>
 
-    <!-- Fecha de Nacimiento (Obligatorio) -->
+    <!-- Fecha de Nacimiento -->
     <fieldset class="form-group">
         <label for="dob">Fecha de Nacimiento:</label>
         <input type="date" id="dob" name="dob" class="fieldsetInput" value="{{user.dob}}" required>
+        <span id="dobError" class="error-message">{{errorDob}}</span>
     </fieldset>
 
     <!-- Correo -->

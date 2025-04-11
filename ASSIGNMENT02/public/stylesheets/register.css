@@ -31,6 +31,7 @@
     font-size: 12px;
     width: 100%;
     text-align: center;
+    border: 1.5px solid #d0b928;
 }
 
 .submitBtn {
@@ -54,14 +55,55 @@
     padding: 0;
 }
 
-#googleLogo {
-    width: 20px;
-    height: 20px;
-    margin-right: .5em;
+.form-group-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    border: none;
+    padding: 0;
+}
+
+.login-text {
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+.login-link {
+    margin-left: 0.3em;
+    color: #007BFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
 }
 
 .google-btn {
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 0.5em 1.25em;
+    background-color: white;
+    border: 1px solid #d0b928;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    font-size: 1rem;
+    color: #444;
+    transition: all 0.3s ease;;
+  }
+
+.google-btn:hover {
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    text-decoration: none;
 }
+
+.google-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.75em;
+  }

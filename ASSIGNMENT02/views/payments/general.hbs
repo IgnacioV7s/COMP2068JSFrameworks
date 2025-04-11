@@ -1,10 +1,18 @@
 <div class="paymentSummary">
-
-    <div>
-        <h2>Total pagado: </h1>
-        <p>$ {{ totalPaid }}</p>
+    <div class="summaryDetail">
+        <h2>Total pagado: </h2>
+        <p>{{formatCurrency totalPaid}}</p>
+    </div>
+    <div class="summaryDetail">
+        <h2>Total a pagar: </h2>
+        <p>{{formatCurrency totalToPay}}</p>
+    </div>
+    <div class="summaryDetail">
+        <h2>Falta por pagar: </h2>
+        <p>{{formatCurrency remainingToPay}}</p>
     </div>
 </div>
+
 <div class="table-container">
     <table>
         <thead>

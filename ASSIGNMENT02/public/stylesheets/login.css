@@ -34,6 +34,7 @@
   font-size: 14px;
   width: 100%;
   text-align: center;
+  border: 1.5px solid #d0b928;
 }
 
 /* Campo de texto de la contraseña (para alinear con el botón de hacer visible o no) */
@@ -68,24 +69,54 @@
   font-size: 14px;
   cursor: pointer;
   max-width: max-content;
-  margin-bottom: 1em;
 }
 
-#needAccount{
+#needAccount {
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Inicio de sesión con Google (Logo y Texto) */
-#googleLogo{
-  width: 20px;
-  height: 20px;
-  margin-right: .5em;
+.register-link {
+  margin-left: 0.5em;
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.google-btn{
+.register-link:hover {
+  text-decoration: underline;
+}
+
+.form-group {
   display: flex;
   justify-content: center;
+}
+
+.google-btn {
+  display: flex;
   align-items: center;
+  padding: 0.5em 1.25em;
+  background-color: white;
+  border: 1px solid #d0b928;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  color: #444;
+  transition: all 0.3s ease;;
+}
+
+.google-btn:hover {
+  background-color: #f7f7f7;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.google-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.75em;
 }

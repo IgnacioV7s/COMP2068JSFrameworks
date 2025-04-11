@@ -1,6 +1,7 @@
 var express = require('express');
 const User = require('../models/User'); // Asegúrate de que la ruta esté correcta
 var router = express.Router();
+app = express(); // Asegúrate de que 'app' esté definido correctamente en tu archivo principa
 
 // Middleware para verificar si el usuario está autenticado
 function isAuthenticated(req, res, next) {
@@ -33,5 +34,15 @@ async function isProfileComplete(req, res, next) {
     res.status(500).send("Internal Server Error");
   }
 }
+
+app.use(function (err, req, res, next) {
+  const statusCode = err.status || 500; // Captura el código de estado del error
+  const errorMessage = err.message || "Ocurrió un error inesperado.";
+
+  res.status(statusCode).render("error", {
+      title: `Error ${statusCode}`, // Título basado en el código
+      message: errorMessage // Mensaje del error
+  });
+});
 
 module.exports = { isAuthenticated, isProfileComplete };

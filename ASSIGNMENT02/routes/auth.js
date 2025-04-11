@@ -27,7 +27,12 @@ router.post('/login', async (req, res, next) => {
       if (err) {
         return next(err);
       }
-      return res.redirect('/userprofile');
+      else if(!user.isProfileComplete) {
+        return res.redirect('/payments/general');
+      }
+      else{
+        return res.redirect('/userprofile');
+      }
     });
 
   } catch (error) {
@@ -81,12 +86,11 @@ router.get('/google/callback', passport.authenticate("google", { failureRedirect
   });
 
 router.get('/logout', isAuthenticated, function (req, res, next) {
-  console.log("Logout route reached");  // Verifica que esta ruta se está ejecutando
   req.logout(function (err) {
     if (err) {
       return next(err);
     }
-    res.clearCookie('connect.sid'); // Asegúrate de borrar la cookie de sesión si es necesario
+    res.clearCookie('connect.sid');
     res.redirect('/');
   });
 });

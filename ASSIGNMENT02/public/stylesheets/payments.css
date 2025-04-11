@@ -1,7 +1,9 @@
 .table-container {
-    max-height: 70%; /* Ajusta la altura máxima según tus preferencias */
-    max-width: 100%; /* Ajusta el ancho máximo según tus preferencias */
-    overflow-y: auto; 
+    max-height: 70%;
+    /* Ajusta la altura máxima según tus preferencias */
+    max-width: 100%;
+    /* Ajusta el ancho máximo según tus preferencias */
+    overflow-y: auto;
     /* border: 1px solid #ccc; Opcional: Añade un borde para destacar el área */
 }
 
@@ -13,8 +15,22 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: inline-block;
     text-align: start;
-    padding: 1em;
-    /* width: 50%; */
+    padding: .5em;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.summaryDetail {
+    margin: 0 1em;
+    text-align: center;
+}
+
+.summaryDetail p {
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #d0b928;
+    border-radius: 5px;
 }
 
 .payment-box p {
@@ -44,7 +60,8 @@ table {
     margin-top: 10px;
 }
 
-th, td {
+th,
+td {
     padding: 12px;
     border: 1px solid #d0b928;
 }

@@ -6,9 +6,17 @@
     max-width: fit-content;
 }
 
-.home-container h1, h3 {
-    font-size: 2em;
-    margin-bottom: 1em;
+.home-container h1 {
+    margin-bottom: .5em;
+}
+
+h3{
+    margin-bottom: 1.5em;
+}
+
+#welcomeMsg{
+    font-size: 1.5em;
+    color: #c4251f;
 }
 
 .home-container a {
@@ -38,7 +46,7 @@
 }
 
 #goToPay{
-    background-color: green;
+    background-color: #d0b928;
 }
 
 #goToLogout{
