@@ -1,48 +1,46 @@
 var express = require('express');
-const User = require('../models/User'); // Asegúrate de que la ruta esté correcta
+const User = require('../models/User'); // Asegúrate de que la ruta sea correcta
+const passport = require('passport'); // Importa passport si estás usándolo
 var router = express.Router();
-app = express(); // Asegúrate de que 'app' esté definido correctamente en tu archivo principa
 
 // Middleware para verificar si el usuario está autenticado
 function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {  // Si está autenticado, sigue adelante
+  if (req.isAuthenticated()) {
+    // Usuario autenticado, continúa
     return next();
   }
-  res.redirect('/auth/login');  // Si no, redirige al login
+  // Redirige al login si no está autenticado
+  res.redirect('/auth/login');
 }
 
-// Middleware para verificar si el perfil está completo
+// Middleware para verificar si el perfil del usuario está completo
 async function isProfileComplete(req, res, next) {
-  if (!req.isAuthenticated()) {
-    return res.redirect('/auth/login');
-  }
-
-  // Si el usuario ya está en la página de perfil, no lo redirijas nuevamente
-  if (req.originalUrl === '/userprofile') {
-    return next();
-  }
-
   try {
-    const user = await User.findById(req.user._id);
+    // Verificar autenticación antes de continuar
+    if (!req.isAuthenticated()) {
+      return res.redirect('/auth/login');
+    }
 
-    if (!user.username || !user.rut || !user.dob) {
+    // Si el usuario ya está en la página de perfil, no lo redirijas
+    if (req.originalUrl === '/userprofile') {
+      return next();
+    }
+
+    // Consultar el usuario en la base de datos
+    const user = await User.findById(req.user._id);
+    if (!user || !user.username || !user.rut || !user.dob) {
       return res.redirect('/userprofile');
     }
+
+    // Perfil completo, continúa
     next();
   } catch (error) {
-    console.error("Error checking profile completion:", error);
-    res.status(500).send("Internal Server Error");
+    console.error("Error verificando si el perfil está completo:", error);
+    res.status(500).render('error', {
+      title: 'Error',
+      message: 'Ocurrió un error al verificar el perfil. Por favor, intenta nuevamente más tarde.'
+    });
   }
 }
-
-app.use(function (err, req, res, next) {
-  const statusCode = err.status || 500; // Captura el código de estado del error
-  const errorMessage = err.message || "Ocurrió un error inesperado.";
-
-  res.status(statusCode).render("error", {
-      title: `Error ${statusCode}`, // Título basado en el código
-      message: errorMessage // Mensaje del error
-  });
-});
 
 module.exports = { isAuthenticated, isProfileComplete };

@@ -25,7 +25,7 @@
             {{#each payments}}
             <tr>
                 <td>{{ this.username }}</td>
-                <td>{{ this.amountPaid }}</td>
+                <td>{{ formatCurrency this.amountPaid }}</td>
                 {{#if ../userIsAdmin}}
                 <td>
                     <form action="/payments/update-status/{{this._id}}" method="POST">

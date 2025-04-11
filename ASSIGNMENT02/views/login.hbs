@@ -1,10 +1,17 @@
 <form id="loginInput" method="POST" action="/auth/login">
     <img src="/images/RU.png" id="realLogo" alt="Real Unión Logo">
 
+    {{!-- Mensaje de error (si existe) --}}
+    {{#if errorMessage}}
+    <div class="error-message">
+        <p>{{errorMessage}}</p>
+    </div>
+    {{/if}}
+
     {{!-- Campo de entrada para el correo electrónico --}}
     <fieldset class="form-group">
         <label for="email" class="col-2 control-label">Email:</label>
-        <input class="fieldsetInput" name="email" id="email" placeholder="tucorreo@correo.com" required />
+        <input class="fieldsetInput" name="email" id="email" placeholder="tucorreo@correo.com" value="{{email}}" required />
     </fieldset>
 
     {{!-- Campo de entrada para la contraseña --}}
@@ -33,4 +40,5 @@
         </a>
     </fieldset>
 </form>
+
 <script src="/javascripts/login.js"></script>
