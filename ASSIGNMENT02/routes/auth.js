@@ -110,10 +110,10 @@ router.post('/register', async (req, res, next) => {
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-router.get('/google/callback', passport.authenticate("google", { failureRedirect: "/" }),
-  (req, res) => {
-    res.redirect('/userprofile');
-  });
+router.get('/google/callback', passport.authenticate('google', {
+    failureRedirect: '/',      // Si falla, redirige a la página principal
+    successRedirect: '/userprofile' // Si tiene éxito, redirige a /userprofile
+}));
 
 router.get('/logout', isAuthenticated, function (req, res, next) {
   req.logout(function (err) {
