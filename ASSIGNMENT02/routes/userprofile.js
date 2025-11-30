@@ -26,7 +26,7 @@ router.get('/', isAuthenticated, isProfileComplete, function (req, res, next) {
 });
 
 // Ruta POST para actualizar el perfil del usuario
-router.post("/userprofile", isAuthenticated, async function (req, res, next) {
+router.post("/", isAuthenticated, async function (req, res, next) {
     const { id, rut } = req.body;
 
     try {
