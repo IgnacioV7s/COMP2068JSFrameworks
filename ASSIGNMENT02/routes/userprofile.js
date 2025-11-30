@@ -16,7 +16,7 @@ function normalizeRut(rut) {
 }
 
 // Ruta GET para renderizar el perfil del usuario
-router.get('/userprofile', isAuthenticated, isProfileComplete, function (req, res, next) {
+router.get('/', isAuthenticated, isProfileComplete, function (req, res, next) {
     res.render('userprofile', {
         title: 'User Profile',
         stylesheet: 'userprofile.css',
